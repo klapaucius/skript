@@ -1,0 +1,53 @@
+cabal-version:      3.0
+name:               skript
+version:            0.1.0.0
+-- synopsis:
+-- description:
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             klapaucius
+maintainer:         klapaucius.the.constructor@gmail.com
+-- copyright:
+category:           Compilation
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+-- extra-source-files:
+
+common warnings
+    ghc-options: -Wall -O2
+
+library
+    import:           warnings
+    exposed-modules:  SKrIpt.CodeGen,
+                      SKrIpt.Compiler,
+                      SKrIpt.PrimLib,
+                      SKrIpt.Runtime
+    -- other-modules:
+    -- other-extensions:
+    build-depends:    base ^>=4.14.3.0, containers
+    hs-source-dirs:   lib
+    default-language: Haskell2010
+
+executable skript
+    import:           warnings
+    main-is:          Main.hs
+    -- other-modules:
+    -- other-extensions:
+    build-depends:
+        base ^>=4.14.3.0,
+        skript
+
+    hs-source-dirs:   app
+    default-language: Haskell2010
+
+test-suite skript-test
+    import:           warnings
+    default-language: Haskell2010
+    -- other-modules:
+    -- other-extensions:
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.14.3.0,
+        skript
